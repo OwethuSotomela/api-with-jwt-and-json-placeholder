@@ -3,7 +3,7 @@ GET http://localhost:3000/api
 ###
 
 POST http://localhost:3000/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Ik93ZSIsImVtYWlsIjoib3dlQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NTAzMDMyODF9.HPRCMRMg-j2J1Dkd3HOdh8ig247fD85ueCcV_61q-F0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Ik93ZSIsImVtYWlsIjoib3dlQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NTAzMDUzMTF9.aV1GFtMJPhHQ5zXgaat9DY-SAEspZYsCnQePO6GNsO8
 
 ###
 
