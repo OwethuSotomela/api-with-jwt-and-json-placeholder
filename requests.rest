@@ -1,10 +1,9 @@
-GET http://127.0.0.1:3000/posts
+GET http://localhost:3000/api
 
 ###
 
-POST http://127.0.0.1:3000/login
-Content-Type: application/json
+GET http://localhost:3000/api/post
 
-{
-    "username": "Owe"
-}
+###
+
+POST http://localhost:3000/api/login
