@@ -9,10 +9,18 @@ app.get('/api', (req, res) => {
     })
 })
 
-app.get('/api/post', verifyToken, (req, res) => {
-    res.json({
-        post: "Post created"
+app.post('/api/post', verifyToken, (req, res) => {
+    jwt.verify(req.token, 'secretkey', (err, authData) => {
+        if (err) {
+            res.sendStatus(403)
+        } else {
+            res.json({
+                post: "Post created...",
+                authData
+            })
+        }
     })
+
 })
 
 app.post('/api/login', (req, res) => {
@@ -42,6 +50,11 @@ function verifyToken(req, res, next) {
         // splint at the space
         const bearer = bearerHeader.split(' ');
         // get token from array
+        const bearerToken = bearer[1];
+        // set the token
+        req.token = bearerToken;
+        // next middleware
+        next();
     } else {
         // forbidden
         res.sendStatus(403)
