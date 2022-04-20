@@ -12,21 +12,8 @@ app.get("/api", (req, res) => {
     });
 });
 
-app.get("/api/post", verifyToken, (req, res) => {
-    jwt.verify(req.key, "secretkey", (err, authData) => {
-        if (err) {
-            res.sendStatus(403);
-        } else {
-            res.json({
-                post: "Post created...",
-                authData,
-            });
-        }
-    });
-});
-
 app.post("/api/login", async (req, res) => {
-    
+
     var { username } = req.body;
     var userExists = false;
 
@@ -43,7 +30,7 @@ app.post("/api/login", async (req, res) => {
         });
 
     if (userExists) {
-        jwt.sign({ username }, "secretkey", {expiresIn: '5m'}, (err, key) => {
+        jwt.sign({ username }, "secretkey", { expiresIn: '5m' }, (err, key) => {
             res.json({
                 key,
             });
@@ -51,6 +38,19 @@ app.post("/api/login", async (req, res) => {
     } else {
         res.sendStatus(403);
     }
+});
+
+app.get("/api/posts", verifyToken, (req, res) => {
+    jwt.verify(req.key, "secretkey", (err, authData) => {
+        if (err) {
+            res.sendStatus(403);
+        } else {
+            res.json({
+                post: "Post created...",
+                authData,
+            });
+        }
+    });
 });
 
 // Format of token
@@ -75,6 +75,7 @@ function verifyToken(req, res, next) {
         res.sendStatus(403);
     }
 }
+
 
 console.log("Hello, Oz!");
 
